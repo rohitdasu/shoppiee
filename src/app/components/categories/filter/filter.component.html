@@ -1,0 +1,43 @@
+<div>
+  <br />
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title size="10">
+        Sort By
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="row p5">
+      <div class="col-md-12">
+        <p>Price</p>
+      </div>
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip (click)="sortBySelect('LH')" [selected]="firstP"
+          >Low to High</mat-chip
+        >
+        <mat-chip (click)="sortBySelect('HL')" [selected]="secondP"
+          >High to Low</mat-chip
+        >
+      </mat-chip-list>
+    </div>
+    <br />
+    <mat-divider></mat-divider>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p>Rating</p>
+      </div>
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip (click)="sortBySelectRating('LH')" [selected]="firstR"
+          >Low to High</mat-chip
+        >
+        <mat-chip (click)="sortBySelectRating('HL')" [selected]="secondR"
+          >High to Low</mat-chip
+        >
+      </mat-chip-list>
+    </div>
+  </mat-expansion-panel>
+</div>

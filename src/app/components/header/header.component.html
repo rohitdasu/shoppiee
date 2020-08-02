@@ -1,0 +1,90 @@
+<mat-toolbar color="light">
+  <!-- <button mat-icon-button class="example-icon">
+    <mat-icon>shopping_basket</mat-icon>
+  </button> -->
+
+  <span class="my-header" style="cursor: pointer;" routerLink=""
+    >Shoppiee!</span
+  >
+  <span class="example-spacer"></span>
+
+  <div class="row m-2" *ngIf="!isLoggedIn">
+    <button
+      mat-button
+      class="example-icon favorite-icon my-font"
+      aria-label="Example icon-button with heart icon"
+      (click)="login()"
+    >
+      <mat-icon>person_pin</mat-icon>
+      Log in
+    </button>
+  </div>
+  <div class="row m-2" *ngIf="isLoggedIn">
+    <button
+      mat-button
+      class="example-icon favorite-icon my-font"
+      aria-label="Example icon-button with heart icon"
+      (click)="logout()"
+    >
+      <mat-icon>person_pin</mat-icon>
+      Log out
+    </button>
+  </div>
+  &nbsp; &nbsp;
+  <div class="row">
+    <button
+      mat-button
+      (click)="gotoCart()"
+      class="example-icon my-font"
+      aria-label="Example icon-button with share icon"
+    >
+      <mat-icon [matBadge]="cartNum" matBadgeColor="warn">shopping_cart</mat-icon>
+      Cart
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-divider></mat-divider>
+
+<mat-toolbar>
+  <div style="position: absolute; left: 50%; transform: translate(-50%);">
+    <button
+      mat-button
+      [matMenuTriggerFor]="menu1"
+      class="h2 small my-font my-menu"
+    >
+      Men
+    </button>
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item (click)="gotoTop('men')" class="dark">Top-Wear</button>
+      <button mat-menu-item (click)="info()">Bottom-Wear</button>
+      <button mat-menu-item (click)="info()">Foot-Wear</button>
+    </mat-menu>
+    &nbsp; &nbsp; | &nbsp; &nbsp;
+    <button
+      mat-button
+      [matMenuTriggerFor]="menu2"
+      class="h2 small my-font my-menu"
+    >
+      Women
+    </button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item (click)="info()">Top-Wear</button>
+      <button mat-menu-item (click)="info()">Bottom-Wear</button>
+      <button mat-menu-item (click)="info()">Foot-Wear</button>
+    </mat-menu>
+    &nbsp; &nbsp; | &nbsp; &nbsp;
+    <button
+      mat-button
+      [matMenuTriggerFor]="menu3"
+      class="h2 small my-font my-menu"
+    >
+      Kids
+    </button>
+    <mat-menu #menu3="matMenu">
+      <button mat-menu-item (click)="info()">Top-Wear</button>
+      <button mat-menu-item (click)="info()">Bottom-Wear</button>
+      <button mat-menu-item (click)="info()">Foot-Wear</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

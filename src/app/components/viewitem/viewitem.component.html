@@ -1,0 +1,96 @@
+<div class="container-fluid">
+  <div class="row">
+    <span class="h5 p-3">HOME / MEN / VIEW</span>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 col-lg-6 mt-5 mb-5">
+        <img class="small" [src]="data.img" />
+      </div>
+      <div class="col-md-6 col-sm-12 col-lg-6">
+        <div class="row">
+          <span class="h1 mt-5">{{ data.brand | uppercase }}</span>
+        </div>
+        <div class="row">
+          <span *ngIf="data.rating == '1'" class="h6">&#11088;</span>
+          <span *ngIf="data.rating == '2'" class="h6">&#11088;&#11088;</span>
+          <span *ngIf="data.rating == '3'" class="h6"
+            >&#11088;&#11088;&#11088;</span
+          >
+          <span *ngIf="data.rating == '4'" class="h6"
+            >&#11088;&#11088;&#11088;&#11088;</span
+          >
+          <span *ngIf="data.rating == '5'" class="h6"
+            >&#11088;&#11088;&#11088;&#11088;&#11088;</span
+          >
+        </div>
+        <div class="row">
+          <span class="h6">{{ data.price | currency: "INR" }}</span>
+        </div>
+        <div class="row">
+          <span class="">
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui
+            blanditiis praesentium voluptatum deleniti atque corrupti quos
+            dolores et quas molestias excepturi sint occaecati cupiditate non
+            provident, similique sunt in culpa qui officia deserunt mollitia
+            animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
+            est et expedita distinctio. Nam libero tempore, cum soluta nobis est
+            eligendi optio cumque nihil impedit quo minus id quod maxime placeat
+            facere possimus, omnis voluptas assumenda est, omnis dolor
+            repellendus. Temporibus autem quibusdam et aut officiis debitis aut
+            rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint
+            et molestiae non recusandae. Itaque earum rerum hic tenetur a
+            sapiente delectus, ut aut reiciendis voluptatibus maiores alias
+            consequatur aut perferendis doloribus asperiores repellat.
+          </span>
+        </div>
+        <div class="row mt-5 mb-5">
+          <div class="col-md-12 mb-2">
+            <span class="h6">Quantity:</span>
+          </div>
+          <div class="col-md-12">
+            <button mat-raised-button (click)="quantity = quantity - 1">
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <span class="h5 m-3">{{ quantity }}</span>
+            <button mat-raised-button (click)="quantity = quantity + 1">
+              <mat-icon>keyboard_arrow_up</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <span class="h6">Size:</span>
+          </div>
+          <div class="col-md-12 mb-5">
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+              <mat-button-toggle (click)="addSize('XS')" value="bold">
+                XS
+              </mat-button-toggle>
+              <mat-button-toggle (click)="addSize('S')" value="italic">
+                S
+              </mat-button-toggle>
+              <mat-button-toggle (click)="addSize('M')" value="underline">
+                M
+              </mat-button-toggle>
+              <mat-button-toggle (click)="addSize('L')" value="underline">
+                L
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-md-12">
+            <button
+              class="btn btn-dark"
+              style="width: 100%;"
+              (click)="addToCart()"
+            >
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

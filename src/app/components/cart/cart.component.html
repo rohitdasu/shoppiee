@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row">
+    <span class="h5 p-3">HOME / CART</span>
+  </div>
+  <div class="row mt-5">
+    <div class="col-sm-12 col-md-12 col-lg-12" *ngIf="cartNum == 0">
+      <span
+        class="h2"
+        style="left: 50%; transform: translate(-50%); position: absolute;"
+        >Empty Cart</span
+      >
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12" *ngIf="cartNum > 0">
+      <div class="list-group" id="list-tab" role="tablist">
+        <a
+          *ngFor="let n of cart"
+          class="list-group-item list-group-item-action mt-2"
+          id="list-home-list"
+          data-toggle="list"
+          role="tab"
+          aria-controls="home"
+        >
+          <div class="row">
+            <div class="col-md-2">
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <img [src]="n.img" style="width: 100%;" />
+                </div>
+                <div class="col-md-6 col-sm-6 mt-5">
+                  <div class="row ml-1">
+                    <span>
+                      Brand: <span class="h6">{{ n.brand }}</span>
+                    </span>
+                  </div>
+                  <div class="row mt-2 ml-1">
+                    <span>
+                      Rating:
+                      <span class="h6"
+                        >{{ n.rating }}<span>&#11088;</span></span
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 mt-5">
+              Quantity:
+              <span class="h6">{{ n.Quantity }}</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Size:
+              <span class="h6">{{ n.size }}</span>
+            </div>
+            <div class="col-md-2 mt-5">
+              Price: <span class="h6">{{ n.price | currency: "INR" }}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="cartNum > 0" class="mb-5 mt-5">
+    <div class="col-md-12 col-sm-12">
+      <span class="h6 text-danger">Grand Total: </span>
+      <span class="h5 font-weight-bolder text-danger">{{
+        grandTotal | currency: "INR"
+      }}</span>
+    </div>
+    <button class="ml-3 mt-2 btn btn-dark" (click)="buyNow()">Buy Now</button>
+  </div>
+</div>

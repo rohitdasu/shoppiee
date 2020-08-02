@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <mat-horizontal-stepper color="light" [linear]="isLinear" #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form class="p-4" [formGroup]="firstFormGroup">
+              <ng-template matStepLabel
+                >Fill out your name and number</ng-template
+              >
+              <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input
+                  matInput
+                  placeholder="Last name, First name"
+                  formControlName="firstCtrl"
+                  required
+                /> </mat-form-field
+              ><br />
+              <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input
+                  matInput
+                  placeholder="Mobile Number"
+                  formControlName="secondCtrl"
+                  required
+                />
+              </mat-form-field>
+              <div>
+                <button mat-raised-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form class="p-4" [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Fill out shipping address</ng-template>
+              <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input
+                  matInput
+                  formControlName="secondCtrl"
+                  placeholder="Berhampur, Ganjam"
+                  required
+                />
+              </mat-form-field>
+              <div>
+                <button mat-raised-button matStepperPrevious>Back</button>&nbsp;
+                <button mat-raised-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Pay</ng-template>
+            <p class="h6 p-4">Click Pay Now Button To Pay</p>
+            <div class="pl-4">
+              <button mat-raised-button matStepperPrevious (click)="pay()">
+                Pay Now</button
+              >&nbsp;
+              <button mat-raised-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+  </div>
+</div>

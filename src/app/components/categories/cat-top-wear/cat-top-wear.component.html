@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <span class="h5 p-3">HOME / MEN / TOPWEAR</span>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-paginator
+        [length]="this.items.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20, 30, 40]"
+        (page)="getData($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 mt-5">
+      <app-filter
+        (getDataByRatingHightoLow)="getDataByRatingHightoLow()"
+        (getDataByRatingLowtoHigh)="getDataByRatingLowtoHigh()"
+        (getDataByPriceHightoLow)="getDataByPriceHightoLow()"
+        (getDataByPriceLowtoHigh)="getDataByPriceLowtoHigh()"
+      ></app-filter>
+    </div>
+
+    <div class="col-md-9 mt-5">
+      <div class="row">
+        <div
+          class="col-md-4 col-sm-12 col-xs-12 col-lg-3 m-1 p-1 card"
+          *ngFor="let i of pageSlice"
+        >
+          <div class="card-img-top">
+            <img [src]="i.img" style="width: 100%;" />
+          </div>
+          <div class="card-body">
+            <div class="card-title">
+              <p class="card-text text-left">
+                {{ i.brand }} - {{ i.price | currency: "INR" }} - &nbsp;&nbsp;
+                {{ i.rating }}&nbsp;<span>&#11088;</span>
+              </p>
+            </div>
+            <div class="row">
+              <button class="btn btn-xs btn-dark m-1" (click)="addToCart(i)">Add to Cart</button>
+              <button class="btn btn-xs btn-dark m-1" (click)="gotoViewItem(i)">View Item</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
