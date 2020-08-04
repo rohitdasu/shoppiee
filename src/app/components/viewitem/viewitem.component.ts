@@ -35,6 +35,7 @@ export class ViewitemComponent implements OnInit {
       return;
     }
     var x = {
+      id:this.data.id,
       img: this.data.img,
       price: this.data.price,
       rating: this.data.rating,

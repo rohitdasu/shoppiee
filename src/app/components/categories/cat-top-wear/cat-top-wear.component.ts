@@ -62,6 +62,7 @@ export class CatTopWearComponent implements OnInit {
   }
   addToCart(x) {
     var z = {
+      id:x.id,
       img: x.img,
       price: x.price,
       rating: x.rating,

@@ -3,7 +3,7 @@
     <span class="h5 p-3">HOME / CART</span>
   </div>
   <div class="row mt-5">
-    <div class="col-sm-12 col-md-12 col-lg-12" *ngIf="cartNum == 0">
+    <div class="col-sm-12 col-md-12 col-lg-12" *ngIf="cartNum == 0 && grandTotal == 0">
       <span
         class="h2"
         style="left: 50%; transform: translate(-50%); position: absolute;"
@@ -52,13 +52,14 @@
             </div>
             <div class="col-md-2 mt-5">
               Price: <span class="h6">{{ n.price | currency: "INR" }}</span>
+              <mat-icon class="p-3" style="cursor: pointer;" (click)="delete(n)">delete</mat-icon>
             </div>
           </div>
         </a>
       </div>
     </div>
   </div>
-  <div *ngIf="cartNum > 0" class="mb-5 mt-5">
+  <div *ngIf="cartNum > 0 && grandTotal > 0" class="mb-5 mt-5">
     <div class="col-md-12 col-sm-12">
       <span class="h6 text-danger">Grand Total: </span>
       <span class="h5 font-weight-bolder text-danger">{{

@@ -5,6 +5,7 @@ import { RootComponentComponent } from './components/root-component/root-compone
 import { LoginComponent } from './components/auth-pages/login/login.component';
 import { RegisterComponent } from './components/auth-pages/register/register.component';
 import { LoginGuard } from './guards/login.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { ViewitemComponent } from './components/viewitem/viewitem.component';
 import { CartComponent } from './components/cart/cart.component';
 import { BuyComponent } from './components/buy/buy.component';
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: 'view-item', component: ViewitemComponent },
   { path: '', component: RootComponentComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'buy', component: BuyComponent },
+  { path: 'buy', component: BuyComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [LoginGuard] },
   { path: '**', component: RootComponentComponent },

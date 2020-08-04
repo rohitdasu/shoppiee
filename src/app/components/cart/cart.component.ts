@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cart = this.data.getCartData();
+    console.log(this.cart)
     this.data.currentCartSize.subscribe((val) => {
       this.cartNum = val;
     });
@@ -40,7 +41,20 @@ export class CartComponent implements OnInit {
     if (x == true) {
       this._router.navigate(['/buy']);
     } else {
-      this._router.navigate(['/login']);
+      this._router.navigate(['/login',{id:'cart'}]);
     }
   }
+  delete(data:any){
+    for(var i=0;i<this.cart.length;i++){
+      if(this.cart[i].id==data.id){
+        console.log(data.id);
+        this.cart.splice(i,1);
+      }
+    }
+    console.log(this.cart);
+    this.grandTotal = this.grandTotal-data.price;
+    this.cartNum = this.cartNum-1;
+    this.data.cartSize.next(this.cartNum);
+  }
+
 }
